@@ -314,7 +314,12 @@ def test(model, t, batch_generator, standard, beta, logger):
                 [word.lower() if word not in ['[CLS]', '[SEP]'] else word for word in
                  '[CLS] What sentiment given the aspect'.split(' ')])
             sentiment_query+=final_asp_list[idx]
-
+            sentiment_query += t.convert_tokens_to_ids([word.lower() for word in 'and the opinion'.split(' ')])
+            # # 拼接所有的opinion
+            for idy in range(predict_opinion_num):
+                sentiment_query+=final_opi_list[idx][idy]
+                if idy < predict_opinion_num - 1:
+                    sentiment_query.append(t.convert_tokens_to_ids('/'))
             sentiment_query.append(t.convert_tokens_to_ids('?'))
             sentiment_query.append(t.convert_tokens_to_ids('[SEP]'))
 

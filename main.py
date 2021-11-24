@@ -176,7 +176,7 @@ def test(model, t, batch_generator, standard, beta, logger):
                 asp_ind = [f_asp_start_index[i]-5, f_asp_end_index[i]-5]
                 opi_ind = [f_opi_start_index[idx]-f_opi_length, f_opi_end_index[idx]-f_opi_length]
                 temp_prob = f_asp_prob[i] * f_opi_prob[idx]
-                if asp_ind + opi_ind not in forward_pair_list:
+                if asp_ind + opi_ind not in forward_pair_ind_list:
                     forward_pair_list.append([asp] + [opi])
                     forward_pair_prob.append(temp_prob)
                     forward_pair_ind_list.append(asp_ind + opi_ind)

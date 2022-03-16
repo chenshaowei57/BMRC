@@ -380,8 +380,6 @@ def tokenized_data(data):
             temp_query = sample.sentiment_querys[idx]
             temp_text = sample.text
             temp_answer = sample.sentiment_answers[idx]
-            if if_tokenized:
-                print(2)
             temp_query_to = ['[CLS]'] + temp_query + ['[SEP]'] + temp_text
             temp_query_seg = [0] * (len(temp_query) + 2) + [1] * len(temp_text)
             assert len(temp_query_to) == len(temp_query_seg)
